@@ -10,7 +10,8 @@ defmodule StockPriceListener.Application do
     children = [
       # Starts a worker by calling: StockPriceListener.Worker.start_link(arg)
       # {StockPriceListener.Worker, arg}
-      {Phoenix.PubSub, name: StockPriceListener.PubSub}
+      {Phoenix.PubSub, name: StockPriceListener.PubSub},
+      {StockPriceListener, []}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
