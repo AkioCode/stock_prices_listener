@@ -4,20 +4,20 @@ defmodule StockPriceListener.ClientTest do
   alias StockPriceListener.Client
 
   test "subscribe/1 with valid ticker" do
-    assert Client.subscribe("fb") == "Subscribed to FB updates"
+    assert Client.subscribe("FB") == "Subscribed to FB updates"
   end
 
   test "subscribe/1 with invalid ticker" do
-    assert Client.subscribe("tsla") == "TSLA not found!"
+    assert Client.subscribe("TSLA") == "TSLA not found!"
   end
 
   test "unsubscribe/1 with valid ticker" do
-    StockPriceListener.Client.subscribe("amz")
-    assert Client.unsubscribe("amz") == "Unsubscribed from AMZ updates"
+    StockPriceListener.Client.subscribe("AMZ")
+    assert Client.unsubscribe("AMZ") == "Unsubscribed from AMZ updates"
   end
 
   test "unsubscribe/1 with invalid ticker" do
-    assert Client.unsubscribe("tsla") == "TSLA not found!"
+    assert Client.unsubscribe("TSLA") == "TSLA not found!"
   end
 
   test "subscribe_all/0 subscribes to all tickers" do

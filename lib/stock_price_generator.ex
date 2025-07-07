@@ -14,7 +14,7 @@ defmodule StockPriceGenerator do
   end
 
   defp loop(period) do
-    Enum.each(~w(fb amz aapl nvda goog), fn ticker ->
+    Enum.each(~w(FB AMZ AAPL NVDA GOOG), fn ticker ->
       price = Enum.random(1000..20000)
       Phoenix.PubSub.broadcast(StockPriceListener.PubSub, ticker, {ticker, price})
     end)

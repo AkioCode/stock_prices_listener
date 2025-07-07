@@ -5,7 +5,7 @@ defmodule StockPriceListener.Server do
   alias StockPriceListener.Stash
   use GenServer
 
-  @tickers ~w(fb amz aapl nvda goog)
+  @tickers ~w(FB AMZ AAPL NVDA GOOG)
 
   def start_link(args) do
     GenServer.start_link(__MODULE__, args, name: __MODULE__)
