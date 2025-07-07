@@ -20,7 +20,7 @@ erl_crash.dump
 *.ez
 
 # Ignore package tarball (built via "mix hex.build").
-stock_price_stream-*.tar
+stock_price_listener-*.tar
 
 # Temporary files, for example, from tests.
 /tmp/

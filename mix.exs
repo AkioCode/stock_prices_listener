@@ -3,7 +3,7 @@ defmodule StockPriceListener.MixProject do
 
   def project do
     [
-      app: :stock_price_stream,
+      app: :stock_price_listener,
       version: "0.1.0",
       elixir: "~> 1.17",
       start_permanent: Mix.env() == :prod,
