@@ -19,7 +19,7 @@ defmodule StockPriceListener.Application do
       # {StockPriceListener.Worker, arg}
       {Phoenix.PubSub, name: StockPriceListener.PubSub},
       {Cluster.Supervisor, [topologies, [name: StockPriceListener.ClusterSupervisor]]},
-      {StockPriceListener, []}
+      {StockPriceListener.Server, []}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

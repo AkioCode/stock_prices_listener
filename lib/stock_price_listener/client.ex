@@ -1,6 +1,6 @@
-defmodule StockPriceListener.Api do
+defmodule StockPriceListener.Client do
   @moduledoc """
-  API for interacting with the StockPriceListener server.
+  Client API for interacting with the StockPriceListener server.
   """
 
   @doc """
@@ -36,6 +36,6 @@ defmodule StockPriceListener.Api do
   end
 
   defp call(args) do
-    apply(GenServer, :call, [StockPriceListener, args])
+    apply(GenServer, :call, [StockPriceListener.Server, args])
   end
 end
