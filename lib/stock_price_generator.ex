@@ -18,6 +18,7 @@ defmodule StockPriceGenerator do
       price = Enum.random(1000..20000)
       Phoenix.PubSub.broadcast(StockPriceListener.PubSub, ticker, {ticker, price})
     end)
+
     Process.send_after(self(), {:loop, period}, period)
   end
 end

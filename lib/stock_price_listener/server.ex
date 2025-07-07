@@ -15,29 +15,36 @@ defmodule StockPriceListener.Server do
   def init(_initial_state) do
     IO.puts("Starting StockPriceListener Server")
     subscribed = Stash.get("topics")
+
     if subscribed != [] do
       IO.puts("Restoring subscriptions: #{Enum.join(subscribed, ", ")}")
+
       Enum.each(subscribed, fn ticker ->
         Phoenix.PubSub.subscribe(StockPriceListener.PubSub, ticker, link: true)
       end)
     end
+
     {:ok, subscribed}
   end
 
   @impl true
   def handle_call(:subscribe_all, _from, _state) do
     Stash.put("topics", @tickers)
+
     Enum.each(@tickers, fn ticker ->
       Phoenix.PubSub.subscribe(StockPriceListener.PubSub, ticker, link: true)
     end)
+
     {:reply, "Subscribed to all", @tickers}
   end
 
   def handle_call(:unsubscribe_all, _from, _state) do
     Stash.put("topics", [])
+
     Enum.each(@tickers, fn ticker ->
       Phoenix.PubSub.unsubscribe(StockPriceListener.PubSub, ticker)
     end)
+
     {:reply, "Unsubscribed from all", []}
   end
 
@@ -48,7 +55,7 @@ defmodule StockPriceListener.Server do
     {:reply, "Subscribed to #{String.upcase(ticker)} updates", topics}
   end
 
-  def handle_call({:unsubscribe, ticker}, _from, state)  when ticker in @tickers do
+  def handle_call({:unsubscribe, ticker}, _from, state) when ticker in @tickers do
     topics = state -- [ticker]
     Stash.put("topics", topics)
     Phoenix.PubSub.unsubscribe(StockPriceListener.PubSub, ticker)
