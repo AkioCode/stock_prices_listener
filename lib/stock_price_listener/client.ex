@@ -36,6 +36,7 @@ defmodule StockPriceListener.Client do
   end
 
   defp call(args) do
-    apply(GenServer, :call, [StockPriceListener.Server, args])
+    args = [StockPriceListener.Server, args]
+    apply(GenServer, :call, args)
   end
 end
