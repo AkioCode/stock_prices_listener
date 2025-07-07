@@ -84,7 +84,7 @@ StockPriceListenerServer.crash()
 ### Manually Broadcast a Stock Price
 
 ```elixir
-Phoenix.PubSub.broadcast(StockPriceListener.PubSub, "AAPL", {"AAPL", 312.45})
+Phoenix.PubSub.broadcast(StockPriceListener.PubSub, "AAPL", {"AAPL", 31245})
 ```
 
 ---
