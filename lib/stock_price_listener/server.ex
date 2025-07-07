@@ -68,7 +68,7 @@ defmodule StockPriceListener.Server do
 
   @impl true
   def handle_info("crash", state) do
-    raise("Intentional crash for testing purposes")
+    raise(RuntimeError, "Intentional crash for testing purposes")
     {:noreply, state}
   end
 
@@ -87,6 +87,6 @@ defmodule StockPriceListener.Server do
   end
 
   def crash do
-    Phoenix.PubSub.broadcast(StockPriceListener.PubSub, "amz", "crash")
+    Phoenix.PubSub.broadcast(StockPriceListener.PubSub, "AMZ", "crash")
   end
 end
